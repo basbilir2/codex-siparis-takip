@@ -1,0 +1,852 @@
+{
+  "schema": {
+    "name": "Izmirde_Reklam_Siparis_Takip_Digital_Twin_Context",
+    "schema_version": "2026-09-02-v11",
+    "captured_product_version": "1.9.44",
+    "captured_at_local": "2026-09-02T22:31:52+03:00",
+    "language": "tr-TR",
+    "authority": "Bu dosya İzmirde Reklam Sipariş Takip ürününün ana bağlam ve yeniden oluşturma şartnamesidir. Başka bir yapay zeka sohbeti önce bu dosyanın tamamını okumalı, sonra kaynak kodu incelemelidir.",
+    "priority_rule": "Bu JSON ile eski sohbet özeti, eski şartname, mock ekran veya eski kurulum çelişirse bu JSON ve burada belirtilen 1.9.44 kaynak dosyaları kazanır.",
+    "truth_layers": [
+      "Çalışan davranış için en yüksek teknik otorite kaynak kodudur.",
+      "İş kuralları ve yeniden oluşturma hedefi için bu JSON otoritedir.",
+      "Firestore erişim güvenliği için app/firestore.rules otoritedir.",
+      "Hesaplama ayrıntıları için app/src/utils.js otoritedir.",
+      "Windows ve WhatsApp davranışı için app/desktop-package içindeki dosyalar otoritedir."
+    ],
+    "reconstruction_scope": "Bu JSON; ürünün davranışını, ekranlarını, veri modelini, formüllerini, güvenlik sınırlarını, kurulumunu ve test ölçütlerini yeniden üretmek için ayrıntılı bir dijital ikiz şartnamesidir. Gerçek kullanıcı verileri, özel anahtarlar, OAuth sırları ve derlenmiş ikilinin ham baytları bu dosyaya kopyalanmaz.",
+    "secret_policy": "Firebase üretim kimlikleri yalnız mevcut ürünü tanımlamak içindir. Dijital kopya, deneme, yeniden adlandırılmış sürüm veya farklı kurulum bu kimlikleri kullanamaz; ayrı Firebase projesi ve ayrı Windows kimlikleri edinmelidir. Üretim yayın yetki dosyası, OAuth sırları ve kullanıcı oturumları JSON içine konmaz."
+  },
+  "project_identity": {
+    "product_name": "İzmirde Reklam Sipariş Takip",
+    "forbidden_short_brand": "Baş harflerden oluşan ST markası hiçbir kullanıcı ekranında gösterilmez.",
+    "purpose": "Reklam ve baskı üretim işlerini; müşteri, yönetici, malzeme, hizmet, teslim durumu, yaklaşık fiyat ve WhatsApp kaynağıyla sade biçimde takip etmek.",
+    "production_status": "Gerçek kullanımda olan canlı Firebase ve Windows uygulaması.",
+    "current_version": "1.9.44",
+    "project_root": "C:\\siparis-takip",
+    "source_root": "C:\\siparis-takip\\app",
+    "release_root": "C:\\siparis-takip\\release",
+    "final_installer": "C:\\siparis-takip\\release\\IzmirdeReklam-SiparisTakip-Kurulum.exe",
+    "installed_executable": "C:\\Users\\USER\\AppData\\Local\\Programs\\izmirde-reklam-siparis-takip-production\\İzmirde Reklam Sipariş Takip.exe",
+    "live_url": "https://PRIVATE_VALUE_011/",
+    "firebase_project_id": "siparis-takip-70e85",
+    "firebase_auth_domain": "PRIVATE_VALUE_011",
+    "firebase_storage_bucket": "siparis-takip-70e85.firebasestorage.app",
+    "firebase_messaging_sender_id": "381265617199",
+    "firebase_web_app_id": "1:381265617199:web:596d499a102fb57f1f01da",
+    "installer_sha256_at_capture": "B9CB9BD71BC73E257FC1615F76B34B8A53B42B538D065334AEAFC25FB48AB416",
+    "installer_size_bytes_at_capture": 99760955
+  },
+  "clone_isolation_and_release_safety": {
+    "incident_2026_09_02": "Sipariş Takip22 adlı deneme kopyası üretim uygulamasının eski com.siparistakip.app kimliğini ve bundan türeyen NSIS GUID'ini yeniden kullandı. Windows ortak kısayolları kopyaya çevrildi; kullanıcı asıl program yerine kopya EXE'yi açtı. Canlı Firebase Hosting kontrolünde üretim markasının sağlam olduğu doğrulandı.",
+    "production_windows_identity": {
+      "package_name": "izmirde-reklam-siparis-takip-production",
+      "app_id": "com.izmirde.reklam.siparistakip.production",
+      "nsis_guid": "57d6bca7-37f9-4ae4-9ce8-0efc0b690a43",
+      "shortcut_name": "İzmirde Reklam Sipariş Takip",
+      "uninstall_display_name": "İzmirde Reklam Sipariş Takip",
+      "rule": "Bu beş değer yalnız üretim kurulumuna aittir; hiçbir dijital kopya veya farklı ürün bunları kullanamaz."
+    },
+    "production_deploy_guard": {
+      "hook": "app/firebase.json hosting.predeploy -> app/scripts/guard-production-deploy.mjs",
+      "authorization_file": "C:\\siparis-takip\\.production-deploy-authorization",
+      "authorization_file_policy": "Dosya taşınabilir bağlama, ZIP'e, dijital kopyaya veya kaynak paylaşımına eklenmez. Yoksa canlı Firebase yayını durdurulur.",
+      "checks": [
+        "Yerel üretim yetki dosyasının SHA-256 doğrulaması",
+        "Firebase projesinin siparis-takip-70e85 olması",
+        "Web paket adının siparis-takip olması",
+        "Windows paket, appId ve ürün adının üretim değerleriyle eşleşmesi",
+        "Kaynak arayüzde İzmirde Reklam Sipariş Takip markasının bulunması ve Sipariş Takip22 adının bulunmaması"
+      ]
+    },
+    "mandatory_clone_policy": [
+      "Dijital kopya varsayılan olarak sandbox kabul edilir ve üretim verisine bağlanmaz.",
+      "Kopya için yeni Firebase projectId, authDomain, web appId ve izinli alan adları oluşturulur.",
+      "Kopya için yeni Electron package name, appId, NSIS GUID, ürün adı, kurulum klasörü ve kısayol adı oluşturulur.",
+      "Kopyanın .firebaserc dosyasında siparis-takip-70e85 bulunamaz.",
+      "Kopya üretim Hosting'e deploy edilemez ve üretim Firestore'una yazamaz.",
+      "Üretim kurucusu Program Ekle/Kaldır'da ayrı ad ve sabit GUID ile görünür; kaldırma kullanıcı arşivini silmez."
+    ]
+  },
+  "product_boundaries": {
+    "must_do": [
+      "Gerçek Google hesabıyla giriş yapmalı.",
+      "Gerçek Cloud Firestore verisini canlı dinlemeli ve yazmalı.",
+      "Müşteriyi sunucu güvenlik kuralları düzeyinde diğer müşterilerden ayırmalı.",
+      "Windows kurucusu geliştirme ortamı olmadan çalışmalı.",
+      "WhatsApp'ta yalnız kullanıcının seçtiği mesaj veya ek üzerinden işlem başlatmalı.",
+      "Yönetici onayı olmadan WhatsApp içeriğini siparişe çevirmemeli.",
+      "Yerel arşiv ile çevrimiçi sipariş kaydını ayrı tutmalı."
+    ],
+    "must_not_do": [
+      "Mock giriş, test kullanıcısı, hardcoded rol veya sahte production verisi kullanma.",
+      "Müşteriye customerPrivate veya orderPrivate verisi gösterme.",
+      "WhatsApp sohbet geçmişini topluca okuma, mesaj gönderme veya mesaj silme.",
+      "Drive veya Sheets scope'u isteme.",
+      "Ayrı ücretli backend, Apps Script veya Google Sheets veritabanı ekleme.",
+      "Sipariş dosyasının yerel Windows yolunu Firestore'a yazma.",
+      "Yerel müşteri arşivini uygulama kaldırılırken silme.",
+      "Test edilmeyen özelliği çalışıyor diye raporlama."
+    ],
+    "non_goals": [
+      "Tam kapsamlı muhasebe veya ERP olmak.",
+      "Banka, ödeme veya tahsilat sistemi olmak.",
+      "WhatsApp Cloud API ile otomatik mesajlaşmak.",
+      "Yerel arşivi şimdilik ağ üzerindeki ortak dosya sunucusuna eşitlemek."
+    ]
+  },
+  "technology_stack": {
+    "web_ui": {
+      "language": "JavaScript JSX",
+      "framework": "React 19.2.8",
+      "renderer": "react-dom 19.2.8",
+      "bundler": "Vite 8.2.0",
+      "routing_dependency": "react-router-dom 7.18.2",
+      "styles": "Vanilla CSS; App.css ve index.css",
+      "spreadsheet_reader": "read-excel-file 9.3.10",
+      "csv_reader_writer": "Papa Parse 5.6.0"
+    },
+    "cloud": {
+      "auth": "Firebase Authentication, yalnız Google Sign-In",
+      "database": "Cloud Firestore",
+      "hosting": "Firebase Hosting",
+      "firebase_sdk": "firebase 12.17.1",
+      "hosting_rewrite": "Tüm yollar /index.html dosyasına gider.",
+      "asset_cache": "JS ve CSS immutable 1 yıl; HTML no-cache."
+    },
+    "desktop": {
+      "runtime": "Electron 43.3.0",
+      "packager": "electron-builder 26.15.3",
+      "installer": "NSIS, assisted installer",
+      "target": "Windows 10/11 x64",
+      "app_id": "com.izmirde.reklam.siparistakip.production",
+      "product_name": "İzmirde Reklam Sipariş Takip"
+    },
+    "quality": {
+      "lint": "oxlint 1.75.0",
+      "unit_tests": "Vitest 4.0.18",
+      "security_tests": "@firebase/rules-unit-testing 5.0.0 ve Firestore Emulator"
+    }
+  },
+  "runtime_architecture": {
+    "web_mode": [
+      "Tarayıcı doğrudan Firebase Hosting üzerindeki React uygulamasını açar.",
+      "Google girişinde Firebase redirect akışı ve browserLocalPersistence kullanılır.",
+      "Müşteriler ve yöneticiler aynı URL'yi kullanır; access/{email} rolü ekranı belirler."
+    ],
+    "desktop_mode": [
+      "Electron ana penceresi canlı Firebase Hosting URL'sini ?desktop=1943 parametresiyle yükler.",
+      "Ana pencere varsayılan 1480x920, minimum 1080x700 boyutundadır.",
+      "Ana pencerede contextIsolation açıktır, nodeIntegration kapalıdır ve preload yalnız gerekli IPC metotlarını açar.",
+      "Google girişi sistem tarayıcısında OAuth 2.0 Authorization Code + PKCE ile açılır; 127.0.0.1 geçici callback sunucusu token alır ve Firebase credential'a dönüştürür.",
+      "Uygulama tek instance çalışır.",
+      "WhatsApp ayrı Electron BrowserWindow içinde web.whatsapp.com olarak açılır ve ayrı kalıcı session partition kullanır."
+    ],
+    "realtime_data": [
+      "Admin ekranı yetkisine göre orders, customers, requests, orderPrivate, customerPrivate, activities, trash ve transferleri onSnapshot ile canlı dinler.",
+      "Owner tüm yönetim verisini; normal admin yalnız managerEmail veya assignedAdminEmail kendisi olan kayıtları sorgular.",
+      "Müşteri orders koleksiyonunda yalnız customerId eşitliğiyle sorgu yapar.",
+      "Hızlı takip bağlantısı publicTracking/{token} ve altındaki orders koleksiyonunu anonim olarak canlı dinler."
+    ]
+  },
+  "authentication_and_access": {
+    "login_ui": {
+      "brand": "İzmirde Reklam Sipariş Takip",
+      "primary_action": "Google ile devam et",
+      "email_password_form": false,
+      "mock_login": false,
+      "account_prompt": "Her girişte Google hesap seçimi prompt=select_account."
+    },
+    "access_resolution": [
+      "Firebase auth tamamlandıktan sonra kullanıcının e-postası küçük harfe çevrilir.",
+      "access/{normalizedEmail} okunur.",
+      "Belge yoksa erişim tanımlı değil ekranı çıkar.",
+      "active false ise hesap pasif ekranı çıkar.",
+      "role owner veya admin ise AdminDashboard, customer ise CustomerDashboard açılır."
+    ],
+    "roles": {
+      "owner": {
+        "label": "Ana Yönetici",
+        "scope": "Tüm müşteriler, siparişler, yöneticiler, finans, talepler, transferler, geçmiş ve çöp kutusu.",
+        "exclusive_actions": [
+          "Owner/admin hesaplarını oluşturmak ve düzenlemek.",
+          "Tüm müşterileri görmek.",
+          "Müşteriyi başka yöneticiye göndermek.",
+          "Geçmiş ve çöp kutusunun tamamını görmek.",
+          "Kendi owner hesabını silememek veya pasifleştirememek.",
+          "Son aktif owner hesabını pasifleştirememek."
+        ]
+      },
+      "admin": {
+        "label": "Yönetici",
+        "scope": "Yalnız kendisine atanmış müşteriler, bunların siparişleri, özel verileri, talepleri, yedekleri ve çöp kayıtları.",
+        "actions": [
+          "Kendi müşterisini ve siparişini oluşturmak ve düzenlemek.",
+          "Owner'dan gelen müşteri transferini kabul etmek.",
+          "Başka yöneticinin müşterisini görememek veya değiştirememek.",
+          "Yönetici hesabı oluşturamamak."
+        ]
+      },
+      "customer": {
+        "label": "Müşteri",
+        "scope": "Yalnız access.customerId ile eşleşen kendi siparişleri.",
+        "actions": [
+          "Siparişleri ve izin verilmişse tahmini son fiyatları görmek.",
+          "Aciliyet, süreç bilgisi ve not talebi göndermek.",
+          "Yönetici izin verdiyse izinli katalogdan yeni sipariş talebi göndermek."
+        ],
+        "forbidden": [
+          "Siparişi düzenlemek, silmek veya durumunu değiştirmek.",
+          "Başka müşterinin siparişini okumak.",
+          "Malzeme alış fiyatı, kur, kâr oranı, yönetici iç notu veya WhatsApp kaynak bilgisini görmek.",
+          "Malzeme, hizmet, döviz, çöp kutusu veya yönetici kayıtlarına erişmek."
+        ]
+      },
+      "public_tracking": {
+        "label": "Şifresiz özel takip",
+        "auth_required": false,
+        "access_model": "Tahmin edilemez trackingToken bağlantısına sahip kişi yalnız o token altındaki sade public sipariş kopyalarını görür.",
+        "forbidden": "Koleksiyon listeleme ve tüm yazma işlemleri yasaktır."
+      }
+    }
+  },
+  "navigation_and_screens": {
+    "admin_sidebar_order": [
+      "Müşteriler",
+      "Siparişler",
+      "Toplamlar ve Finans",
+      "Malzeme ve Hizmetler",
+      "Yöneticiler yalnız owner",
+      "Talepler",
+      "Ayarlar"
+    ],
+    "customers_screen": {
+      "default_view": "Liste",
+      "alternate_view": "Izgara",
+      "default_sort": "En çok sipariş; eşitlikte en son sipariş tarihi",
+      "sort_options": ["En çok sipariş", "Son sipariş tarihi", "En çok aktif sipariş", "Ada göre A-Z"],
+      "search_fields": ["Müşteri adı", "E-posta", "WhatsApp görüşme adı", "Perakende etiketi"],
+      "row_data": ["Ad", "E-posta veya perakende açıklaması", "Aktif sipariş", "Toplam sipariş", "Son sipariş", "Aktif/Pasif"],
+      "actions": ["Siparişlerini aç", "Davet veya takip bağlantısı", "Owner için yöneticiye gönder", "Ayarlar", "Sil"],
+      "retail_first_row": {
+        "label": "Perakende",
+        "position": "Her zaman standart müşterilerin önünde.",
+        "meaning": "Müşteri hesabı açılmadan Hızlı Takip Siparişi olarak eklenen kişilerin tüm işleri tek toplu görünümde.",
+        "implementation_detail": "Veri güvenliği ve kişiye özel takip bağlantısı için Firestore'da her hızlı kişi ayrı quickTracking müşteri belgesi olarak kalır; yönetici arayüzünde tek Perakende satırında gruplanır.",
+        "click_behavior": "Tüm quickTracking müşteri kimliklerine bağlı siparişleri birlikte filtreler.",
+        "links_behavior": "Bağlantılar düğmesi Perakende içindeki kişileri açar; kişi bazlı takip bağlantısı, düzenleme ve silme buradan korunur."
+      }
+    },
+    "orders_screen": {
+      "views": ["Kompakt liste", "Anlaşılır ızgara"],
+      "summary_cards": ["Bekliyor", "Üretimde", "Hazır", "Acil", "Bugün teslim"],
+      "filters": ["Metin", "Durum", "Müşteri veya Perakende", "Hizmet", "Aciliyet"],
+      "list_columns": ["Seçim", "Müşteri", "Sipariş", "Hizmet/Malzeme", "Geliş", "Durum", "Tahmini bitiş", "Öncelik", "İşlemler"],
+      "bulk_actions": ["Görünenleri seç", "Seçimi temizle", "Seçili siparişleri çöp kutusuna taşı"],
+      "row_actions": ["Finans detayını aç/kapat", "Düzenle", "Sil"],
+      "order_click": "Sipariş adına tıklanınca ayrıntı modalı açılır.",
+      "customer_click": "Normal müşteride o müşterinin sipariş filtresi; hızlı takip kaydında toplu Perakende filtresi açılır.",
+      "inline_status": {
+        "behavior": "Detay ekranına girmeden açılır listeden değişir ve Firestore'a anında yazılır.",
+        "colors": {
+          "Bekliyor": "amber/sarı",
+          "Üretimde": "mavi",
+          "Hazır": "yeşil",
+          "Teslim Edildi": "yeşil",
+          "İptal Edildi": "kırmızı",
+          "Tahmini bitişi geçmiş açık sipariş": "durum ne olursa olsun kırmızı uyarı noktası"
+        }
+      },
+      "right_click": "WhatsApp kaynaklı siparişte yerel dosyayı açma, klasörü açma, WhatsApp kaynak bilgisini gösterme ve mesajı bulmayı deneme menüsü açılır."
+    },
+    "finance_screen": {
+      "title": "Toplamlar ve Finans",
+      "visibility": "Yalnız owner ve admin.",
+      "sections": [
+        "Toplam sipariş, toplam ürün, toplam m², teslim edilen",
+        "Malzeme ve hizmete göre sipariş/adet/m²/ortalama maliyet/satış/kazanç",
+        "Toplam satış, toplam ortalama maliyet, toplam kazanç, fiyatı eksik sipariş",
+        "Müşteri hacmi ve kazanç",
+        "Müşteri filtresi",
+        "Sipariş bazında maliyet, hedef kâr, satış ve kazanç"
+      ],
+      "missing_price_rule": "Malzeme fiyatı veya gerekli kur yoksa sipariş kaybolmaz; finans hücreleri boş işareti gösterir ve fiyatı eksik sayacına eklenir.",
+      "payment_tracking": false
+    },
+    "materials_screen": {
+      "title": "Malzeme ve Hizmetler",
+      "top_actions": ["Kur ayarları", "Hizmet ekle", "Malzeme ekle"],
+      "separate_concepts": "Malzeme fiziksel kaynak, hizmet üretim işlemi olarak itemType ile ayrılır.",
+      "creation_flow": [
+        "Önce yalnız ad girilir.",
+        "Ad girildikten sonra Özellik ekle açılır.",
+        "Gereken alanlar malzeme veya hizmet bazında eklenir; gereksiz alan gösterilmez.",
+        "Alan adları ve birimleri düzenlenebilir, alan silinebilir, özel alan oluşturulabilir.",
+        "Boş fiyat veya boş özellik alanı malzemenin kaydedilmesine engel değildir.",
+        "Malzeme kopyalanabilir, düzenlenebilir ve listeden silinebilir; eski sipariş metni korunur."
+      ],
+      "field_types": {
+        "area": "Ölçü/alan. Varsayılan birim m². En ve boy cm girilerek otomatik hesaplanır. Fiziksel malzemede plaka eni, plaka boyu ve plaka fiyatı tanımlanabilir.",
+        "minute": "Dakika bazlı süre.",
+        "weight": "Kilogram bazlı ağırlık.",
+        "quantity": "Adet.",
+        "fixed": "Sipariş başına bir kez sabit işlem ücreti.",
+        "thickness": "mm cinsinden bilgi alanı; varsayılan olarak fiyat üretmez.",
+        "custom": "Kullanıcının isim ve birimini tanımladığı özel sayısal alan."
+      },
+      "service_combination": "Bir malzemede Hizmet seçimi özelliği açılırsa izin verilen UV baskı, kesim vb. hizmetler sipariş sırasında aynı ürüne eklenebilir. Siparişte tek satırda Malzeme + Hizmet etiketi oluşur.",
+      "service_price": "Hizmetin katalog fiyatı olabilir veya boş olabilir. Sipariş oluşturulurken projeye özel hizmet satış bedeli girilebilir."
+    },
+    "requests_screen": {
+      "types": {
+        "urgent": "Aciliyet talebi",
+        "process_info": "Süreç bilgisi isteği",
+        "note": "Not",
+        "new_order": "Müşteri panelinden yeni sipariş talebi"
+      },
+      "admin_actions": ["Yeni sipariş talebini siparişe dönüştür", "Talebi kapat", "Kapalı talebi yeniden aç"],
+      "new_order_conversion": "Talep adı, izinli malzeme/hizmet, açıklama ve müşteri kimliği yeni sipariş formuna taşınır; sipariş kaydedilince talep closed olur."
+    },
+    "settings_screen": {
+      "tabs": ["Para birimi ve kur", "Uyarılar", "WhatsApp", "Yedek ve dışa aktar", "Geçmiş ve çöp kutusu yalnız owner"],
+      "currency": "Sistem para birimi TRY/USD/EUR/GBP seçilebilir. Varsayılan otomatik kurdur; istenirse manuel kur açılır.",
+      "alerts": "Yaklaşan teslim ve hareketsizlik uyarıları ayrı ayrı açılıp kapatılır ve gün sayıları ayarlanır.",
+      "backup": "Otomatik müşteri yedeği, JSON sistem yedeği ve CSV çıktıları.",
+      "history": "İşlem günlüğü, tekli veya toplu çöp silme, sıralama ve geri yükleme."
+    },
+    "customer_dashboard": {
+      "privacy_text": "Burada yalnızca size tanımlanan siparişler görünür.",
+      "tabs": ["Siparişlerim", "Maliyetlerim yönetici izin verdiyse", "Toplamlarım"],
+      "summary_cards": ["Bekliyor", "Üretimde", "Hazır", "Acil", "Bugün teslim"],
+      "filters": ["Metin", "Durum", "Hizmet", "Başlangıç tarihi", "Bitiş tarihi", "En yeni", "En eski", "A-Z", "Z-A", "Teslim tarihine göre"],
+      "actions_per_order": ["Aciliyet", "Süreç bilgisi", "Not gönder"],
+      "new_order_permission": "canCreateOrderRequests true ise Sipariş ekle düğmesi görünür.",
+      "catalog_permission": "Müşteri yalnız allowedMaterialIds ve allowedServiceIds üzerinden oluşturulan customerOrderCatalog seçeneklerini görür.",
+      "cost_visibility": "showCostsToCustomer false ise Maliyetlerim sekmesi anında gizlenir.",
+      "cost_content": "Sipariş, malzeme+hizmet, ölçü/miktar, adet, tarih ve tahmini son fiyat. Alış fiyatı, kur, kâr oranı ve birim maliyet gösterilmez.",
+      "responsive": "Masaüstünde yoğun tablo, dar ekranda okunaklı mobil kart/satır düzeni."
+    },
+    "public_tracking_screen": {
+      "route": "https://PRIVATE_VALUE_011/?takip={trackingToken}",
+      "content": ["Kişi adı", "Sipariş sayısı", "Sipariş", "Malzeme+Hizmet", "Ölçü", "Durum", "Tahmini bitiş"],
+      "login_required": false,
+      "mutation_allowed": false
+    }
+  },
+  "core_workflows": {
+    "create_normal_customer": [
+      "Yönetici Müşteri ekle der.",
+      "Müşteri adı ve Google e-postası zorunludur; WhatsApp görüşme adı isteğe göre düzenlenebilir.",
+      "Owner sorumlu yöneticiyi seçebilir; admin otomatik kendisi olur.",
+      "customers belgesi ve access/{email} customer rolü aynı batch içinde oluşturulur.",
+      "Telefon ilk kayıtta istenmez; müşteri ayarlarında customerPrivate içine sonradan girilir.",
+      "Hazır davet mesajı kopyalanabilir veya mailto taslağı açılabilir.",
+      "Müşteri canlı URL'yi açıp tanımlanan Google hesabını seçer; ayrıca şifre oluşturmaz."
+    ],
+    "create_retail_quick_customer": [
+      "WhatsApp'ta kayıtlı olmayan görüşmenin mesajına sağ tıklanır.",
+      "Hızlı Takip Siparişi Oluştur seçilir.",
+      "Arka planda quickTracking=true, e-postasız ve tahmin edilemez trackingToken içeren ayrı müşteri kaydı oluşturulur.",
+      "Sipariş bu kimliğe bağlanır ve publicTracking altına sade kopyası yazılır.",
+      "Yönetici Müşteriler ekranında kişi ayrı standart müşteri gibi görünmez; Perakende toplu satırına katılır.",
+      "Kişi bazlı bağlantı yalnız kendi siparişlerini gösterir.",
+      "Tüm bu kişilerin fiziksel ekleri yönetici arşivinde tek Perakende klasörüne gider."
+    ],
+    "create_manual_order": [
+      "Müşteri seçilir.",
+      "Sipariş adı zorunludur.",
+      "Malzeme ve sıfır veya daha çok hizmet seçilir.",
+      "Malzemenin tanımlı inputları kadar ölçü/süre/ağırlık/adet/özel alan gösterilir.",
+      "Varsayılan geliş tarihi bugündür, varsayılan durum Bekliyor'dur.",
+      "Tahmini bitiş ve acil bilgisi isteğe bağlıdır.",
+      "Otomatik finans hesaplanır veya yönetici özel maliyet+kâr girerek manuel fiyatı etkinleştirir.",
+      "orders ve orderPrivate batch ile birlikte yazılır; hızlı takip müşterisiyse publicTracking kopyası eşitlenir."
+    ],
+    "change_status": [
+      "Liste veya ızgaradaki durum seçicisinden yeni durum seçilir.",
+      "orders.status, statusChangedAt, updatedAt ve updatedBy güncellenir.",
+      "Teslim Edildi ise deliveredAt serverTimestamp olur; diğer durumlarda null olur.",
+      "Hızlı takip siparişinin public kopyası güncellenir.",
+      "activities içine status_changed kaydı yazılır."
+    ],
+    "delete_and_restore": [
+      "Silme fiziksel olarak doğrudan yok etmez; veri trash belgesine taşınır.",
+      "Sipariş silinince orders, orderPrivate ve bağlı requests birlikte taşınır; hızlı public kopya silinir.",
+      "Bağlı siparişi bulunan müşteri silinemez.",
+      "Müşteri silinince customer, customerPrivate, access ve bağlı requests geri yüklenebilir veriyle trash'e yazılır.",
+      "Owner veya yetkili admin trash içinden geri yükleyebilir.",
+      "Çöp kayıtları tekli veya toplu kalıcı silinebilir."
+    ],
+    "customer_transfer": [
+      "Owner müşteri ve bağlı order/request kimliklerini hedef admin için customerTransfers belgesine pending yazar.",
+      "Hedef admin bildirimi görür ve kabul eder.",
+      "customers.assignedAdminEmail, access.managerEmail, orders.managerEmail, orderPrivate.managerEmail ve requests.managerEmail hedef admin olur.",
+      "Transfer accepted olarak kapanır."
+    ],
+    "spreadsheet_import": [
+      "xlsx veya csv kabul edilir.",
+      "Sipariş dosyasında ilk 25 satır içinde Tarih, İsim, Malzeme ve Ölçü başlıkları aranır.",
+      "Alternatif başlıklar: tarih/date; grup/malzeme/mazleme/ürün grubu; açıklama/proje/proje adı/sipariş/sipariş adı/ürün/isim; miktar/m2/metrekare/alan/alan m2/ölçü/ölçü m2.",
+      "Hareket sütunu varsa yalnız satış satırları alınır.",
+      "Ölçü 205x135 cm, mm, m veya 2,40 m² biçiminde çözümlenir.",
+      "Boş tarih, ad, malzeme veya ölçü boş bırakılır; yönetici sonradan siparişe tıklayarak tamamlar.",
+      "İçe aktarılan kayıt receivedAt tarihine göre listede doğru kronolojik yere girer; yükleme zamanı sıralamayı bozmaz.",
+      "Yeni müşteri oluşturulabilir veya mevcut müşteriye bağlanabilir.",
+      "Müşteri listesi içe aktarımında Müşteri adı ve E-posta zorunludur; WhatsApp adı isteğe bağlıdır."
+    ],
+    "backup_export": [
+      "Yönetici başına backupSettings ile enabled, intervalDays varsayılan 7 ve retentionDays varsayılan 90 saklanır.",
+      "Uygulama açıkken zamanı gelen her müşteri için customerBackups kaydı üretir.",
+      "Aynı müşteri ve aynı yedek dönemi içindeki tekrarlar ile retention süresi dolanlar temizlenir.",
+      "JSON yedeği erişilebilen customer, order, orderPrivate, request, material, group, template, rate, finance setting, admin ve transfer verilerini içerir.",
+      "Sipariş, müşteri ve malzeme için Excel uyumlu noktalı virgül CSV çıktıları vardır."
+    ]
+  },
+  "whatsapp_integration": {
+    "surface": "Windows Electron uygulamasının içindeki ayrı WhatsApp Web penceresi.",
+    "first_connection": "Kullanıcı telefonda WhatsApp > Bağlı cihazlar > Cihaz bağla ile ekrandaki QR kodu okutur. Genel kamera QR okuyucusu kullanılmaz.",
+    "session": "persist:izmirde-whatsapp adlı kalıcı Electron session partition; normal Chrome uzantısına bağlı değildir.",
+    "privacy": [
+      "Yalnız sağ tıklanan mesaj satırı ve görünen sohbet adı incelenir.",
+      "Sohbet geçmişi topluca Firestore'a kopyalanmaz.",
+      "Uygulama mesaj göndermez veya silmez.",
+      "Sipariş yönetici onay formu kaydedilmeden oluşmaz."
+    ],
+    "right_click_options": {
+      "registered_customer": ["Projeyi Sipariş Takibe Al", "Projeyi İptal Et kayıt eşleşirse"],
+      "unregistered_chat": ["Hızlı Takip Siparişi Oluştur", "Müşteri Olarak Ekle"],
+      "disabled_behavior": "Koşul sağlanmayan seçenek gri olur ve nedeni metinde belirtilir."
+    },
+    "customer_matching": [
+      "Müşteri displayName ve whatsappName alias olarak masaüstüne senkronize edilir.",
+      "Türkçe küçük harf, aksan temizleme ve noktalama boşluk normalizasyonu uygulanır.",
+      "Tam eşleşme kabul edilir.",
+      "En az 10 rakamlı telefonlarda son 10 rakam eşleşmesi kabul edilir.",
+      "En az iki kelimede token eşleşmesi kabul edilir."
+    ],
+    "project_matching": "Dosya uzantısı kaldırılır, metin normalize edilir ve aynı customerId içindeki order.name ile karşılaştırılır.",
+    "attachment_extensions": ["pdf", "ai", "cdr", "eps", "svg", "psd", "png", "jpg", "jpeg", "tif", "tiff", "webp", "zip", "rar", "doc", "docx", "xls", "xlsx"],
+    "title_parser": [
+      "Dosya uzantısını kaldırır.",
+      "EnxBoy biçimindeki ölçüyü tanır.",
+      "mm ise 0.1 ile, metre ise 100 ile çarpıp cm'ye çevirir.",
+      "N adet ifadesini tanır; yoksa adet 1 olur.",
+      "Bilinen hizmet/tür metnini başlıkta arar; yoksa Diğer."
+    ],
+    "local_download_timing": "Özel sağ tık seçeneğine basıldığı anda WhatsApp'ın yerel İndir menüsü hâlâ açıkken download stage kurulur ve native İndir tıklanır; sipariş onay formu bundan sonra açılır.",
+    "open_source_from_order": [
+      "Siparişe sağ tıklayınca önce yerel dosya indeksinde sourceFileKey aranır.",
+      "Dosya varsa Yerel dosyayı aç ve Dosyanın klasörünü aç aktiftir.",
+      "Dosya yoksa yerel dosya bu bilgisayarda yok açıklaması gösterilir.",
+      "WhatsApp bilgisi chat, başlık, mesaj tarihi ve sipariş tarihiyle gösterilir.",
+      "WhatsApp'ta bulmayı dene, önce açık görüşmede başlık arar; gerekirse kayıtlı telefonla sohbeti açar.",
+      "WhatsApp eski mesaj senkronu tamamlanmamışsa mesaj bulma garanti değildir; yerel arşiv bu bağımlılığı ortadan kaldırmak için ana çözümdür."
+    ]
+  },
+  "local_archive": {
+    "default_root": "%USERPROFILE%\\Documents\\İzmirde Reklam Sipariş Takip",
+    "configured_root_source": "Electron app.getPath('userData') altındaki archive-root.txt; yoksa varsayılan Documents yolu.",
+    "directory_formula": "{archiveRoot}\\Yöneticiler\\{managerEmailSafe}\\Müşteriler\\{customerFolder}\\{YYYY}\\{MM}\\{projectNameSafe}\\{fileName}",
+    "normal_customer_folder": "Kayıtlı müşterinin displayName değeri.",
+    "retail_folder": "quickTracking=true olan tüm kişiler için tek Perakende klasörü.",
+    "automatic_folder_creation": "Müşteri listesi veya aktif yönetici masaüstüne senkronize olduğunda kayıtlı normal müşteri klasörleri ve gerekiyorsa Perakende klasörü otomatik oluşturulur.",
+    "date_rule": "WhatsApp timestamp içinde gg.aa.yyyy benzeri tarih varsa yıl/ay buradan; yoksa indirme anındaki yerel yıl/ay.",
+    "project_rule": "Dosya uzantısı çıkarılmış güvenli sipariş başlığı proje klasörü olur.",
+    "duplicate_rule": "Aynı isim varsa dosya (2), (3) şeklinde yeni ad alır; üstüne yazılmaz.",
+    "safe_name_rule": "Kontrol karakterleri ve Windows'ta yasak <>:\"/\\|?* karakterleri temizlenir, son nokta/boşluk kaldırılır, ad 90 karaktere kesilir ve CON/PRN/AUX/NUL/COM1-9/LPT1-9 adları alt çizgiyle güvenli hale gelir.",
+    "path_boundary_rule": "Oluşan mutlak dizinin yönetici müşteri kökü altında kaldığı doğrulanmadan mkdir veya kaydetme yapılmaz.",
+    "source_file_key": "managerEmail::messageId; messageId yoksa managerEmail::normalizedChat::normalizedTitle.",
+    "local_index": "Electron userData/local-source-files.json. Firestore'a yerel yol gönderilmez.",
+    "desktop_isolation": "Her yönetici bilgisayarı kendi yerel arşivini oluşturur; şimdilik ağ senkronu yoktur.",
+    "uninstall_rule": "Kurulum kaldırıldığında yerel arşiv ve user data bilerek silinmez.",
+    "forward_only_caveat": "Yeni sistemle indirilen dosyalar otomatik arşivlenir. Önceden yalnız çevrimiçi kaydı olan ve yerelde indirilmeyen dosya kendiliğinden geçmişe dönük oluşmaz."
+  },
+  "order_status_and_sorting": {
+    "statuses": ["Bekliyor", "Üretimde", "Hazır", "Teslim Edildi", "İptal Edildi"],
+    "default_order_sort": [
+      "Açık siparişler üstte, Teslim Edildi siparişler altta.",
+      "Açık siparişler receivedAt azalan, eşitlikte createdAt azalan.",
+      "Teslim edilenler kendi bölümünde deliveredAt veya statusChangedAt veya updatedAt azalan; en yeni teslim, teslim edilenler bölümünün üstünde."
+    ],
+    "import_sort": "Geç yüklenen eski tarihli Excel/CSV kaydı receivedAt nedeniyle geçmişteki doğru konuma gider.",
+    "customer_filter_sort": "Müşteri panelinde de teslim edilenler alta alınır; seçilen sıralama açık kayıtlar üzerinde uygulanır.",
+    "overdue": "Tahmini bitiş tarihi bugünden önce ve durum Teslim Edildi/İptal Edildi değilse durum noktasının tonu kırmızıdır.",
+    "delivery_warning": "settings/deliveryReminders.enabled true ise bugün ile tahmini bitiş arasındaki gün 0..daysBefore aralığındaki açık siparişler gösterilir.",
+    "inactivity_warning": "settings/orderInactivity.enabled true ise son statusChangedAt/updatedAt/createdAt/receivedAt üzerinden geçen tam gün daysWithoutMovement değerine ulaştığında açık sipariş uyarılır; uyarıya tıklayınca yalnız bu siparişler filtrelenir."
+  },
+  "pricing_and_measurement_engine": {
+    "currencies": ["TRY", "USD", "EUR", "GBP"],
+    "money_rounding": "Para sonuçları Math.round(value * 100) / 100 ile 2 ondalığa yuvarlanır. Bazı m² birim maliyetleri 4 ondalık saklayabilir.",
+    "formulas": {
+      "area_m2": "explicit areaM2 > 0 ise areaM2; aksi halde widthCm * heightCm * max(quantity,1) / 10000",
+      "sheet_area_m2": "sheetWidthCm * sheetHeightCm / 10000",
+      "sheet_cost_per_m2": "sheetPrice / sheetAreaM2",
+      "source_component_amount": "componentQuantity * sourceUnitPrice",
+      "try_cost": "sourceAmount * purchaseExchangeRate",
+      "try_sale_base": "sourceAmount * saleExchangeRate",
+      "sale_with_profit": "round2(trySaleBase * (1 + profitRate / 100))",
+      "profit": "round2(sale - cost)",
+      "combined_cost": "Tüm fiyatlı malzeme ve hizmet bileşenlerinin cost toplamı",
+      "combined_sale": "Tüm fiyatlı malzeme ve hizmet bileşenlerinin sale toplamı",
+      "combined_effective_profit_rate": "cost > 0 ise round2(((sale - cost) / cost) * 100), değilse 0",
+      "manual_sale": "round2(max(costAmount,0) * (1 + max(profitRate,0) / 100))",
+      "currency_conversion": "amount * rate[fromCurrency] / rate[toCurrency]; TRY rate değeri 1; eksik veya sıfır rate null sonuç verir",
+      "system_currency_display": "Tüm iç finans sonuçları TRY tabanlıdır; ekranda TRY'den seçilen systemCurrency'ye convertCurrency ile çevrilir."
+    },
+    "component_usage": {
+      "area_m2": "orderAreaM2(order)",
+      "area_custom_unit": "calculationValues.area veya calculationQuantity",
+      "minute": "calculationValues.minute veya calculationQuantity",
+      "weight": "calculationValues.weight veya calculationQuantity",
+      "quantity": "calculationValues.quantity veya calculationQuantity veya order.quantity",
+      "fixed": 1,
+      "custom": "calculationValues[customKey] veya aynı calculationType ise calculationQuantity",
+      "thickness": "Bilgi alanıdır; nonPriced olduğu için varsayılan fiyat bileşeni üretmez."
+    },
+    "automatic_material_price": [
+      "Sipariş componentMaterialIds içeriyorsa her aktif child malzeme/hizmet ayrı hesaplanır.",
+      "Hizmet için servicePriceOverrides varsa hizmet cost 0, sale override, profit override olur.",
+      "Fiyatlı bileşenler toplanır; fiyatı olmayan bileşenler unpricedComponents olarak raporlanır.",
+      "Hiç fiyatlı bileşen yoksa finance.enabled false olur fakat sipariş görünmeye devam eder.",
+      "Tek malzeme eski metinle geldiyse material.name, groupName+variantName veya variantName+groupName normalize tam eşleşmesi aranır."
+    ],
+    "manual_finance_override": "orderPrivate.financeEnabled=true ise otomatik malzeme fiyatı yerine costAmount, profitRate ve saleAmount kullanılır.",
+    "automatic_snapshot": [
+      "Sipariş kaydında otomatik fiyat hesaplandıysa orderPrivate.automaticPriceSnapshot içine cost, sale, profitRate, area, unit cost, calculation, currency, kurlar ve kaynak döviz tutarları yazılır.",
+      "TRY malzemede snapshot geçmiş siparişi sonradan değişen katalog fiyatından korur.",
+      "Dövizli malzemede currentExchangeRates verilince önce güncel malzeme tanımıyla yeniden hesaplanır; bu mümkün değilse snapshot kaynak döviz tutarı güncel kurla yeniden değerlenir."
+    ],
+    "foreign_currency_revaluation": {
+      "automatic_rate_provider": "https://api.frankfurter.dev/v2/rates?base=TRY&quotes=USD,EUR,GBP",
+      "provider_transform": "API TRY başına yabancı para oranı döndürdüğü için uygulama 1 / rate ile 1 USD/EUR/GBP kaç TRY değerini üretir ve 4 ondalığa yuvarlar.",
+      "daily_storage": "exchangeRates/{YYYY-MM-DD}; USD, EUR, GBP, source automatic veya manual, providerDate.",
+      "automatic_behavior": "manualRateEnabled false ve bugünün eksiksiz otomatik kuru yoksa uygulama açıldığında günde bir kez kur çeker.",
+      "manual_behavior": "Manuel kur açılırsa yönetici 1 USD/EUR/GBP kaç TL değerini yazar; otomatik çekim o gün kullanılmaz.",
+      "old_foreign_order_formula": "sourceCost = snapshot.costAmount / previousPurchaseRate; sourceSaleBase = snapshot.saleAmount / (1 + profitRate/100) / previousSaleRate; currentCost = sourceCost * currentRate; currentSale = sourceSaleBase * currentRate * (1 + profitRate/100).",
+      "business_reason": "Yıllar önce 5 USD olan malzeme bugün de 5 USD kaynak değerinden güncel kura çevrilir; yalnız eski TL maliyetine göre satış yapılıp zarar edilmez."
+    },
+    "customer_price_projection": [
+      "Yönetici tarafındaki güncel orderFinance sonucu orders.customerPriceAmount alanına eşitlenir.",
+      "Müşteri yalnız customerPriceAmount son fiyatını görür.",
+      "Müşteri ekranı alış maliyeti, döviz kaynağı, birim fiyat ve kâr oranını almaz.",
+      "Fiyat hesaplanamıyorsa Hesaplanmadı gösterilir."
+    ],
+    "worked_examples": [
+      {
+        "name": "205x135 cm plaka maliyeti",
+        "input": "Plaka 205 cm x 135 cm ve alış fiyatı 3200 TRY",
+        "sheet_area_m2": 2.7675,
+        "cost_per_m2_formula": "3200 / 2.7675",
+        "order_20x30_cm_area": 0.06,
+        "order_cost_formula": "0.06 * (3200 / 2.7675)",
+        "sale_formula": "orderCost * (1 + profitRate/100)"
+      },
+      {
+        "name": "Dövizli eski sipariş",
+        "input": "Kaynak maliyet 5 USD, önceki kur 30, güncel kur 42, kâr %20",
+        "current_cost_try": 210,
+        "current_sale_try": 252,
+        "profit_try": 42
+      }
+    ]
+  },
+  "firestore_data_model": {
+    "access/{normalizedEmail}": {
+      "purpose": "Kimlik, rol ve müşteri/yönetici kapsamı.",
+      "fields": ["email", "role owner|admin|customer", "customerId customer rolünde", "managerEmail", "displayName", "active", "createdAt", "updatedAt"]
+    },
+    "customers/{customerId}": {
+      "purpose": "Müşterinin herkese açık olmayan temel yönetim ayarları.",
+      "fields": ["displayName", "email normal müşteride", "whatsappName", "assignedAdminEmail", "createdBy", "quickTracking", "trackingToken", "showCostsToCustomer", "canCreateOrderRequests", "allowedMaterialIds", "allowedServiceIds", "customerOrderCatalog", "active", "createdAt", "updatedAt"]
+    },
+    "customerPrivate/{customerId}": {
+      "purpose": "Müşterinin göremeyeceği iletişim ve iç not.",
+      "fields": ["whatsappNumber", "internalNote", "managerEmail", "updatedAt", "updatedBy"]
+    },
+    "orders/{orderId}": {
+      "purpose": "Yönetici ve yalnız ilgili müşterinin okuyabildiği sipariş ana kaydı.",
+      "fields": ["customerId", "managerEmail", "name", "type hizmet etiketi", "material malzeme+hizmet etiketi", "componentMaterialIds", "calculationType", "inputFields", "inputDefinitions", "calculationQuantity", "calculationValues", "widthCm", "heightCm", "quantity", "areaM2", "customerPriceAmount", "currentRateDate", "receivedAt", "status", "statusChangedAt", "deliveredAt", "estimatedCompletion", "urgent", "description", "createdAt", "createdBy", "updatedAt", "updatedBy"]
+    },
+    "orderPrivate/{orderId}": {
+      "purpose": "Yalnız yönetici finansı, iç notu ve WhatsApp/kaynak bilgisi.",
+      "fields": ["managerEmail", "internalNote", "financeEnabled", "costAmount", "profitRate", "saleAmount", "financialNote", "servicePriceOverrides", "automaticPriceSnapshot", "currentRateDate", "source manual|whatsapp|spreadsheet|customer-panel", "sourceChat", "sourceTitle", "sourceMessageId", "sourcePhone", "sourceTimestamp", "sourceCustomerName", "sourceQuickTracking", "sourceFile", "sourceRow", "createdAt", "createdBy", "updatedAt", "updatedBy"]
+    },
+    "requests/{requestId}": {
+      "fields": ["customerId", "managerEmail", "orderId", "type urgent|process_info|note|new_order", "name", "materialId", "material", "serviceId", "service", "measurement", "message", "status open|closed", "createdAt", "updatedAt"]
+    },
+    "materials/{materialId}": {
+      "fields": ["name", "kind variant", "itemType material|service", "groupId", "groupName", "variantName", "componentMaterialIds", "templateId", "templateName", "inputFields", "inputDefinitions", "customInputs", "serviceSelectionEnabled", "allowedServiceIds", "priceComponents", "calculationType", "unitLabel", "sheetWidthCm", "sheetHeightCm", "unitPrice", "sheetCost", "currency", "exchangeRate legacy null", "sheetCostTry legacy null", "costPerM2", "profitRate", "active", "createdAt", "updatedAt"]
+    },
+    "materialGroups/{groupId}": {
+      "purpose": "Eski/uyumlu malzeme veya hizmet ana grupları; mevcut basit builder yeni kayıtta groupId null kullanabilir.",
+      "fields": ["name", "category", "createdAt", "updatedAt"]
+    },
+    "materialTemplates/{templateId}": {
+      "purpose": "Eski/uyumlu özel input şablonları.",
+      "fields": ["name", "inputFields", "createdAt", "updatedAt"]
+    },
+    "exchangeRates/{YYYY-MM-DD}": {
+      "fields": ["date", "USD", "EUR", "GBP", "source automatic|manual", "providerDate", "updatedAt", "updatedBy"]
+    },
+    "settings/financeDisplay": {
+      "fields": ["systemCurrency", "manualRateEnabled", "updatedAt", "updatedBy"]
+    },
+    "settings/deliveryReminders": {
+      "fields": ["enabled", "daysBefore", "updatedAt", "updatedBy"]
+    },
+    "settings/orderInactivity": {
+      "fields": ["enabled", "daysWithoutMovement", "updatedAt", "updatedBy"]
+    },
+    "publicTracking/{trackingToken}": {
+      "fields": ["displayName", "active", "createdAt", "updatedAt"],
+      "subcollection_orders": "Yalnız publicOrderData alanları: name, type, material, widthCm, heightCm, areaM2, quantity, calculationType, calculationQuantity, calculationValues, inputDefinitions, receivedAt, estimatedCompletion, status, urgent, description, updatedAt."
+    },
+    "customerTransfers/{customerId}__{targetAdminEmail}": {
+      "fields": ["customerId", "customerName", "customerEmail", "fromEmail", "fromName", "toEmail", "toName", "orderIds", "requestIds", "status pending|accepted|rejected", "createdAt", "acceptedAt", "updatedAt"]
+    },
+    "activities/{activityId}": {
+      "fields": ["actorEmail", "actorName", "action", "entityType", "entityId", "label", "managerEmail", "details", "createdAt"]
+    },
+    "trash/{trashId}": {
+      "fields": ["entityType order|customer|admin", "originalId", "label", "managerEmail", "deletedBy", "deletedAt", "createdAt", "orderData veya customerData veya accessData", "privateData", "requestsData"]
+    },
+    "backupSettings/{managerEmail}": {
+      "fields": ["enabled", "intervalDays", "retentionDays", "lastBackupAt", "updatedAt"]
+    },
+    "customerBackups/{backupId}": {
+      "fields": ["customerId", "managerEmail", "customerData", "createdBy", "createdAt", "expiresAt"]
+    }
+  },
+  "firestore_security_contract": {
+    "default": "Eşleşmeyen her belge yolu read/write false.",
+    "signed_in": "request.auth ve token.email zorunlu; access belgesi active true olmalı.",
+    "owner": "Tüm yönetim koleksiyonlarında kapsamlı okuma/yazma; kendi owner access belgesini silemez, normal admin owner silemez.",
+    "admin": "Yalnız managerEmail kendisi olan veya assignedAdminEmail kendisi olan kayıtlara erişir. Pending transfer kabulü özel istisnadır.",
+    "customer_orders": "Yalnız resource.data.customerId == access.customerId olan orders read. Create/update/delete yasak.",
+    "private_collections": "customerPrivate ve orderPrivate customer için tamamen kapalı.",
+    "customer_requests": "Kendi customerId ve managerEmail ile; mevcut kendi siparişine urgent/process_info/note veya izin ve katalog kontrolüyle new_order oluşturabilir.",
+    "catalog": "materials, materialGroups, materialTemplates ve exchangeRates yalnız staff.",
+    "settings": "Giriş yapan okuyabilir; staff create/update, yalnız owner delete.",
+    "public_tracking": "Anonim kullanıcı yalnız bilinen token belgesine get ve o token altındaki orders read yapabilir; publicTracking koleksiyonunu list edemez ve yazamaz.",
+    "backup": "Admin yalnız kendi backupSettings belgesini ve kendi müşterilerinin backup kayıtlarını yönetir; müşteri erişemez.",
+    "audit": "activities oluştururken actorEmail oturum e-postası olmalı; silme yasak."
+  },
+  "desktop_ipc_contract": {
+    "renderer_to_main": [
+      "desktop-google-login",
+      "open-whatsapp",
+      "save-whatsapp-source-file",
+      "order-context-menu",
+      "sync-customers",
+      "sync-orders",
+      "sync-current-manager"
+    ],
+    "whatsapp_window_to_main": [
+      "whatsapp-project-context",
+      "whatsapp-stage-source-download",
+      "whatsapp-source-download-failed",
+      "whatsapp-click-point",
+      "whatsapp-open-phone-source",
+      "whatsapp-open-project",
+      "whatsapp-cancel-project",
+      "whatsapp-add-customer",
+      "whatsapp-add-quick-order"
+    ],
+    "main_to_windows": [
+      "whatsapp-show-source",
+      "whatsapp-download-source",
+      "local-source-file-saved"
+    ],
+    "cache_files": [
+      "Electron userData/registered-customers.json",
+      "Electron userData/registered-orders.json",
+      "Electron userData/local-source-files.json",
+      "Electron userData/archive-root.txt"
+    ],
+    "cache_limits": "En fazla 1000 müşteri alias kaydı ve 10000 sipariş başlık kaydı güvenli alan kırpmasıyla masaüstünde tutulur."
+  },
+    "installer_and_release": {
+    "artifact_name": "IzmirdeReklam-SiparisTakip-Kurulum.exe",
+    "one_click": false,
+    "per_machine": false,
+    "installation_directory_change_allowed": true,
+    "archive_directory_page": true,
+    "default_archive_directory": "$DOCUMENTS\\İzmirde Reklam Sipariş Takip",
+    "desktop_shortcut": true,
+    "start_menu_shortcut": true,
+    "run_after_finish": true,
+    "programs_and_features_entry": true,
+    "windows_package_name": "izmirde-reklam-siparis-takip-production",
+    "windows_app_id": "com.izmirde.reklam.siparistakip.production",
+    "nsis_guid": "57d6bca7-37f9-4ae4-9ce8-0efc0b690a43",
+    "uninstall_display_name": "İzmirde Reklam Sipariş Takip",
+    "delete_app_data_on_uninstall": false,
+    "local_archive_preserved_on_uninstall": true,
+    "build_output": "C:\\siparis-takip\\release",
+    "packaged_files": ["main.cjs", "preload.cjs", "desktop-oauth.cjs", "whatsapp-preload.cjs", "whatsapp-extractor.cjs", "package.json"],
+    "live_ui_strategy": "Desktop paketi React dist'i gömmek yerine canlı Hosting URL'sini yükler; bu nedenle web arayüz güncellemeleri mevcut kurulu uygulamalara otomatik gelir. Electron/WhatsApp/yerel arşiv kodu değişirse yeni EXE kurulmalıdır.",
+    "known_path_verification": "NSIS script archive-root.txt dosyasını $APPDATA\\İzmirde Reklam Sipariş Takip altına yazar; Electron runtime app.getPath('userData') yolunun aynı klasöre çözüldüğü her yeni makinede doğrulanmalıdır. Eşleşmezse varsayılan Documents yolu çalışır fakat seçilen özel arşiv yolu kullanılmayabilir."
+  },
+  "ui_design_contract": {
+    "style": "Profesyonel, modern, açık zeminli SaaS yönetim paneli; demo veya oyuncak görünümü yok.",
+    "density": "Çok müşteri ve çok sipariş aynı anda görülebilecek kadar kompakt, fakat okunamayacak kadar sıkışık değil.",
+    "responsive_breakpoints": "Özellikle 760 piksel altında tablolar mobil kart/satır düzenine dönüşür; 1000 piksel altında çok kolonlu özel alanlar sadeleşir.",
+    "primary_color_family": "Mor/indigo",
+    "canvas": "Açık gri-mavi",
+    "status_semantics": "Amber bekleme, mavi üretim, yeşil hazır/teslim, kırmızı iptal/gecikme, violet bugün teslim özeti.",
+    "interaction_rules": [
+      "Her async işlem busy/disabled durumu göstermeli.",
+      "Ham Firebase hata kodu kullanıcıya gösterilmemeli; friendlyError Türkçe mesaj üretmeli.",
+      "Boş listelerde neden ve mümkünse ilk eylem gösterilmeli.",
+      "Silme ve toplu silme onay istemeli.",
+      "Klavye focus ve hover durumu korunmalı.",
+      "Türkçe karakterler bozulmamalı."
+    ],
+    "customer_list_alignment_1_9_44": "Liste satırlarında işlem alanı masaüstünde sabit 140 px genişliktedir. Perakende satırında tek işlem, normal müşteri satırında çok işlem olsa da aktif, toplam ve son sipariş sütunları aynı hizada kalır; 620 px altında işlem alanı yeniden yüzde 100 genişliğe döner."
+  },
+  "sorting_filtering_and_search": {
+    "admin_order_search": "order.name, order.type, order.description ve customer displayName içinde Türkçe küçük harfle substring.",
+    "admin_order_filters": "Durum tam eşleşme, customerId tam eşleşme veya __retail__ grup filtresi, hizmet tam eşleşme, urgent/normal.",
+    "customer_order_search": "name, type, status, description içinde substring.",
+    "customer_date_filter": "receivedAt YYYY-MM-DD değeri from ve to dahil aralığında.",
+    "customer_name_sort": "Intl.Collator tr-TR sensitivity base.",
+    "customer_list_sort": "Varsayılan totalOrders azalan, sonra latestOrder azalan."
+  },
+  "notifications_and_alerts": {
+    "toast_duration_admin_ms": 2600,
+    "toast_duration_customer_ms": 2500,
+    "delivery_default": {"enabled": true, "daysBefore": 3},
+    "inactivity_default": {"enabled": true, "daysWithoutMovement": 3},
+    "delivery_exclusions": ["Teslim Edildi", "İptal Edildi"],
+    "inactivity_exclusions": ["Teslim Edildi", "İptal Edildi"],
+    "customer_delivery_warning": true,
+    "admin_delivery_warning": true,
+    "admin_inactivity_click_filter": true
+  },
+  "test_and_acceptance_contract": {
+    "critical_tests": [
+      "Gerçek Google hesabıyla web ve Windows giriş.",
+      "Access olmayan ve pasif hesap reddi.",
+      "Owner/admin/customer ekran ayrımı.",
+      "Customer A kendi siparişini okur, Customer B siparişini API düzeyinde okuyamaz.",
+      "Customer orderPrivate ve customerPrivate okuyamaz.",
+      "Customer sipariş durumu değiştiremez.",
+      "Admin yalnız kendi müşterisini ve işini görür.",
+      "Owner müşteri transferi yapar, hedef admin kabul eder.",
+      "Hızlı takip tokenı yalnız kendi public siparişlerini gösterir.",
+      "Malzeme alan/miktar/döviz formülleri ve birleşik ürün hesapları.",
+      "Excel/CSV başlık ve ölçü çözümleme.",
+      "Kurulum, açılış, kapanıp açılma, kısayol, Program Ekle/Kaldır ve uninstall.",
+      "Yerel arşiv normal müşteri ve Perakende klasör ayrımı."
+    ],
+    "capture_verification": {
+      "version": "1.9.44",
+      "lint": "PASS on 2026-09-02",
+      "unit_tests": "PASS 43/43 on 2026-09-02",
+      "vite_production_build": "PASS on 2026-09-02",
+      "firebase_hosting_deploy": "PASS on 2026-09-02",
+      "windows_installer_build": "PASS on 2026-09-02",
+      "windows_install_and_launch": "PASS, ProductVersion 1.9.44; sabit üretim appId/GUID, Program Ekle/Kaldır kaydı, masaüstü ve Başlat kısayolları doğrulandı on 2026-09-02",
+      "firestore_rules_tests": "Son kaydedilmiş raporda 9/9 PASS, version 1.9.18. 1.9.44 sırasında kurallar değiştirilmedi. 2026-09-02 tekrar denemesi bu bilgisayardaki Java sürümü 21'den eski olduğu için başlamadı.",
+      "two_real_account_live_test": "Bu bağlam güncellemesinde yeniden yapılmadı. Eski kabul akışlarında kullanıldı; yeni kritik rol veya rules değişikliğinde tekrarlanmalı."
+    },
+    "definition_of_done": [
+      "Mock yok.",
+      "Auth ve Firestore gerçek.",
+      "Kurallar müşteri izolasyonunu kanıtlıyor.",
+      "Web canlı.",
+      "Windows kurucu bağımsız çalışıyor.",
+      "Yerel arşiv kullanıcı verisini koruyor.",
+      "Kritik testlerden biri başarısızsa release-ready yazılmıyor."
+    ]
+  },
+  "build_deploy_commands": {
+    "working_directory": "C:\\siparis-takip\\app",
+    "install_dependencies": "npm install",
+    "lint": "npm run lint",
+    "unit_tests": "npm run test:unit",
+    "firestore_rules_emulator": "npm run test:rules:emulator",
+    "web_build": "npm run build",
+    "hosting_deploy": "npm run deploy:production",
+    "hosting_deploy_guard": "Komut yalnız C:\\siparis-takip\\.production-deploy-authorization mevcut ve doğrulanmışsa çalışır. Dijital kopyada bu dosya bulunmaz.",
+    "windows_installer": "npx electron-builder --projectDir desktop-package --win nsis",
+    "expected_installer": "C:\\siparis-takip\\release\\IzmirdeReklam-SiparisTakip-Kurulum.exe",
+    "version_rule": "Web package.json, desktop-package/package.json ve iki package-lock dosyasındaki sürüm birlikte artırılır; desktop main.cjs içindeki ?desktop= sürüm cache-buster da artırılır.",
+    "windows_identity_rule": "Üretimde package name, appId ve NSIS GUID sabit tutulur. Başka isimdeki her uygulama bu üç değerin tamamında benzersiz olmak zorundadır."
+  },
+  "source_manifest_1_9_44": {
+    "hash_algorithm": "SHA-256",
+    "files": {
+      "app/src/App.jsx": "5196B7A7520DC4FDB87DFA8BA118A2A35C27F1705BEF12CDF7576C38827E38CE",
+      "app/src/App.css": "49DB4C03DFA64909115A0C0B3319ABEB4C05DC3B6B5D8C190F37C71B8274A1B4",
+      "app/src/utils.js": "5F419595AB6FF42AEF43805D5F24C989397ED2C53D5EFD8CC5C7290AB5FBB04A",
+      "app/src/firebase.js": "A23D2F8757A7EC14CE15C4F223208B1E9B7281C7DA5409BD2092DB92F2CE918A",
+      "app/src/main.jsx": "4B4B864DBE45253425D0C925337180EC07E204295179F80F59551216F466F618",
+      "app/src/index.css": "B253C1B83BAB5B7DC9D679C0DFFED845D34B846F4393ABD7F0ADF1365D66FC92",
+      "app/firestore.rules": "72575209E5D5FFCAB29EBF25576C9CC0D3FF161A7C70FFE08271E20E842ABF12",
+      "app/firebase.json": "A7C39354F1E1D0E44628BAC8BE66DB32666E7FC055FFFB797D75DD98AC6D7950",
+      "app/tests/firestore.rules.test.js": "F7D4B210AF90BFB61658A73E4804B23C239A3A1584555808A04E5D059128050B",
+      "app/src/utils.test.js": "A3FC5056E6C08817273131FA8347B954C1A3F0FE0B758F778F7B35CFB4D072FA",
+      "app/desktop-package/main.cjs": "2FE60E27018E3474E780EEF3DEC3638CA8E48A420832A3DB39FFDFB371F2C24F",
+      "app/desktop-package/preload.cjs": "1A1F94E13C982AFCAC5DE022A7822447EA1CF1EA39C5F7A9ADDE8A0F2C1E6B2C",
+      "app/desktop-package/whatsapp-preload.cjs": "454368AA8F6B0EA7265FF9D99B4CAF9A5DC28D344A5A04B5681016B7005F62D7",
+      "app/desktop-package/whatsapp-extractor.cjs": "2F8B9296D184E2B2F9DEBBCDDA301AD462E24AA43DE9DD02B2D986237EE53F40",
+      "app/desktop-package/desktop-oauth.cjs": "PRIVATE_VALUE_012",
+      "app/desktop-package/build/installer.nsh": "9FBC87E2AC2E6FC0E9878F85009F6FD6C727E124E478E4960DD13EE6EBA055EF",
+      "app/package.json": "DA823DFB3FC4A41E05062E401526C2CF33208466D742B3BDE16ACF681D2AE887",
+      "app/desktop-package/package.json": "88E46DB38FFDA803A337E571D8CB8799DC720E7DC9B5522AED502DD9F6050922",
+      "app/scripts/guard-production-deploy.mjs": "8A46FEEA126B806FF9092FCDC32493C112B0E6A3507E2DB8EF495E7FD977AFE1"
+    },
+    "note": "Bu hashler JSON güncellenirken çalışan 1.9.44 kaynaklarının parmak izidir. Kaynak değişince master context sürümü ve ilgili hashler güncellenmelidir."
+  },
+  "reconstruction_instructions_for_another_ai": {
+    "read_order": [
+      "Bu JSON'un tamamını oku.",
+      "Varsa aynı workspace içindeki source_manifest dosyalarını hashlerle doğrula.",
+      "app/src/utils.js hesaplarını aynen koru.",
+      "app/firestore.rules izolasyon mantığını UI kolaylığı uğruna zayıflatma.",
+      "Önce web uygulamasını ve emulator güvenliğini ayağa kaldır.",
+      "Sonra Electron OAuth, WhatsApp pencere/IPC ve yerel arşivi bağla.",
+      "En son NSIS kurucuyu oluştur ve gerçek Windows'ta kur/aç/kaldır testlerini yap."
+    ],
+    "implementation_order": [
+      "Firebase config ve Google provider",
+      "access tabanlı rol çözümü",
+      "Firestore veri modeli ve rules",
+      "Owner/admin/customer/public tracking ekranları",
+      "Sipariş ve müşteri CRUD",
+      "Malzeme/hizmet ve finans motoru",
+      "Kur servisi ve müşteri fiyat projeksiyonu",
+      "Excel/CSV import, transfer, yedek, çöp",
+      "Electron Google PKCE",
+      "WhatsApp sağ tık, kaynak metadata ve yerel arşiv",
+      "Installer ve release testleri"
+    ],
+    "never_infer": [
+      "İlk EXE'yi kuran kişinin otomatik owner olduğu varsayılmamalı; access kaydı otoritedir.",
+      "Normal adminin tüm müşterileri görebileceği varsayılmamalı.",
+      "Perakende grubunun tek trackingToken kullandığı varsayılmamalı; kişiler veri katmanında ayrı tokenlarla izole edilir.",
+      "WhatsApp senkronunun geçmiş dosyaları her zaman bulacağı varsayılmamalı.",
+      "Müşteri ekranındaki Ort. maliyet etiketinin gerçek alış maliyeti olduğu varsayılmamalı; gösterilen değer müşterinin tahmini son fiyatıdır.",
+      "Dövizli eski siparişin eski TL snapshot değeriyle sabit kalacağı varsayılmamalı; güncel kurla yeniden değerlenir."
+    ],
+    "minimum_rebuild_acceptance": [
+      "UI, veri ve kurallar aynı role göre davranıyor.",
+      "Formüller bu JSON'daki örnekleri veriyor.",
+      "Perakende listede ilk ve toplu, takip bağlantıları kişi bazlı.",
+      "Yerel dosya yolu Firestore'a sızmıyor.",
+      "WhatsApp sağ tık yalnız seçilen mesaj üzerinde çalışıyor.",
+      "Kurulum dizini ve arşiv dizini seçilebilir, uninstall arşivi koruyor.",
+      "Tüm kritik testler raporlanıyor."
+    ]
+  },
+  "known_constraints_and_follow_up_checks": [
+    "Bu JSON ham kaynak kodu veya gerçek Firestore verisini içermez; davranışsal dijital ikiz ve yeniden oluşturma sözleşmesidir.",
+    "Aynı canlı Firebase projesini birebir kullanmak için yetkili Firebase/OAuth yapılandırması ayrıca gerekir.",
+    "WhatsApp Web DOM yapısı Meta tarafından değişirse whatsapp-preload selectorları güncellenebilir.",
+    "WhatsApp eski mesaj senkronizasyonu uygulamanın kontrolünde değildir; yeni dosyalar için yerel arşiv ana güvenilir kaynaktır.",
+    "Public tracking bağlantısı bearer-token mantığındadır; link yalnız ilgili kişiye gönderilmelidir.",
+    "Installer özel arşiv yolu ile Electron userData config yolu yeni makinede doğrulanmalıdır.",
+    "Her önemli sürümde source hashes, test sonucu, installer hash ve product version bu JSON'da yenilenmelidir."
+  ]
+}

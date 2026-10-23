@@ -1,0 +1,44 @@
+{
+  "name": "izmirde-reklam-siparis-takip-production",
+  "version": "1.9.44",
+  "description": "İzmirde Reklam için güvenli sipariş takip uygulaması",
+  "author": "İzmirde Reklam",
+  "private": true,
+  "main": "main.cjs",
+  "build": {
+    "appId": "com.izmirde.reklam.siparistakip.production",
+    "productName": "İzmirde Reklam Sipariş Takip",
+    "electronVersion": "43.3.0",
+    "electronDist": "../node_modules/electron/dist",
+    "asar": true,
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "desktop-oauth.cjs",
+      "whatsapp-preload.cjs",
+      "whatsapp-extractor.cjs",
+      "package.json"
+    ],
+    "directories": {
+      "output": "../../release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "../build/icon.png"
+    },
+    "nsis": {
+      "guid": "57d6bca7-37f9-4ae4-9ce8-0efc0b690a43",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "shortcutName": "İzmirde Reklam Sipariş Takip",
+      "uninstallDisplayName": "İzmirde Reklam Sipariş Takip",
+      "include": "build/installer.nsh",
+      "artifactName": "IzmirdeReklam-SiparisTakip-Kurulum.exe"
+    }
+  }
+}

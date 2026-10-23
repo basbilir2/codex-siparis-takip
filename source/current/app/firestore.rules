@@ -1,0 +1,280 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null && request.auth.token.email != null;
+    }
+
+    function userEmail() {
+      return request.auth.token.email;
+    }
+
+    function currentAccess() {
+      return get(/databases/$(database)/documents/access/$(userEmail()));
+    }
+
+    function activeAccount() {
+      return signedIn() && currentAccess().data.active == true;
+    }
+
+    function isOwner() {
+      return activeAccount() && currentAccess().data.role == 'owner';
+    }
+
+    function isAdmin() {
+      return activeAccount() && currentAccess().data.role == 'admin';
+    }
+
+    function isStaff() {
+      return isOwner() || isAdmin();
+    }
+
+    function isCustomer() {
+      return activeAccount() && currentAccess().data.role == 'customer';
+    }
+
+    function ownCustomer(customerId) {
+      return isCustomer() && currentAccess().data.customerId == customerId;
+    }
+
+    function assignedCustomer(customerId) {
+      return isAdmin()
+        && get(/databases/$(database)/documents/customers/$(customerId)).data.assignedAdminEmail == userEmail();
+    }
+
+    function assignedCustomerAfter(customerId) {
+      return isAdmin()
+        && getAfter(/databases/$(database)/documents/customers/$(customerId)).data.assignedAdminEmail == userEmail();
+    }
+
+    function pendingTransfer(customerId) {
+      return isAdmin()
+        && get(/databases/$(database)/documents/customerTransfers/$(customerId + '__' + userEmail())).data.status == 'pending'
+        && get(/databases/$(database)/documents/customerTransfers/$(customerId + '__' + userEmail())).data.toEmail == userEmail();
+    }
+
+    match /access/{email} {
+      allow read: if signedIn() && (
+        email == userEmail()
+        || isOwner()
+        || (isAdmin() && resource.data.role == 'customer' && resource.data.managerEmail == userEmail())
+      );
+      allow create: if isOwner() || (
+        isAdmin()
+        && request.resource.data.role == 'customer'
+        && request.resource.data.managerEmail == userEmail()
+        && assignedCustomerAfter(request.resource.data.customerId)
+      );
+      allow update: if (
+        isOwner()
+        && (
+          resource.data.role != 'owner'
+          || email != userEmail()
+          || (request.resource.data.role == 'owner' && request.resource.data.active == true)
+        )
+      ) || (
+        isAdmin()
+        && resource.data.role == 'customer'
+        && request.resource.data.role == 'customer'
+        && request.resource.data.managerEmail == userEmail()
+        && assignedCustomerAfter(request.resource.data.customerId)
+      );
+      allow delete: if (
+        isOwner() && email != userEmail() && resource.data.role != 'owner'
+      ) || (
+        isAdmin() && resource.data.role == 'customer' && resource.data.managerEmail == userEmail()
+      );
+    }
+
+    match /customers/{customerId} {
+      allow read: if isOwner()
+        || (isAdmin() && resource.data.assignedAdminEmail == userEmail())
+        || ownCustomer(customerId);
+      allow create: if isOwner() || (
+        isAdmin() && request.resource.data.assignedAdminEmail == userEmail()
+      );
+      allow update: if isOwner() || (
+        isAdmin()
+        && request.resource.data.assignedAdminEmail == userEmail()
+        && (
+          resource.data.assignedAdminEmail == userEmail()
+          || pendingTransfer(customerId)
+        )
+      );
+      allow delete: if isOwner() || (
+        isAdmin() && resource.data.assignedAdminEmail == userEmail()
+      );
+    }
+
+    match /customerPrivate/{customerId} {
+      allow read: if isOwner() || assignedCustomer(customerId);
+      allow create, update: if isOwner() || (
+        isAdmin()
+        && request.resource.data.managerEmail == userEmail()
+        && assignedCustomerAfter(customerId)
+      );
+      allow delete: if isOwner() || assignedCustomer(customerId);
+    }
+
+    match /orders/{orderId} {
+      allow read: if isOwner()
+        || (isAdmin() && resource.data.managerEmail == userEmail())
+        || ownCustomer(resource.data.customerId);
+      allow create: if isOwner() || (
+        isAdmin()
+        && request.resource.data.managerEmail == userEmail()
+        && assignedCustomerAfter(request.resource.data.customerId)
+      );
+      allow update: if isOwner() || (
+        isAdmin()
+        && request.resource.data.managerEmail == userEmail()
+        && assignedCustomerAfter(request.resource.data.customerId)
+        && (resource.data.managerEmail == userEmail() || pendingTransfer(request.resource.data.customerId))
+      );
+      allow delete: if isOwner() || (isAdmin() && resource.data.managerEmail == userEmail());
+    }
+
+    match /orderPrivate/{orderId} {
+      allow read: if isOwner() || (isAdmin() && resource.data.managerEmail == userEmail());
+      allow create, update: if isOwner() || (
+        isAdmin()
+        && request.resource.data.managerEmail == userEmail()
+        && getAfter(/databases/$(database)/documents/orders/$(orderId)).data.managerEmail == userEmail()
+      );
+      allow delete: if isOwner() || (isAdmin() && resource.data.managerEmail == userEmail());
+    }
+
+    match /requests/{requestId} {
+      allow read: if isOwner()
+        || (isAdmin() && resource.data.managerEmail == userEmail())
+        || ownCustomer(resource.data.customerId);
+      allow create: if isOwner() || (
+        isAdmin()
+        && request.resource.data.managerEmail == userEmail()
+        && assignedCustomerAfter(request.resource.data.customerId)
+      ) || (
+        isCustomer()
+        && request.resource.data.customerId == currentAccess().data.customerId
+        && request.resource.data.managerEmail == currentAccess().data.managerEmail
+        && request.resource.data.status == 'open'
+        && (
+          (
+            request.resource.data.type in ['urgent', 'process_info', 'note']
+            && get(/databases/$(database)/documents/orders/$(request.resource.data.orderId)).data.customerId == currentAccess().data.customerId
+          ) || (
+            request.resource.data.type == 'new_order'
+            && get(/databases/$(database)/documents/customers/$(currentAccess().data.customerId)).data.canCreateOrderRequests == true
+            && request.resource.data.name is string
+            && request.resource.data.material is string
+            && request.resource.data['service'] is string
+            && request.resource.data.materialId is string
+            && request.resource.data.serviceId is string
+            && (request.resource.data.materialId != '' || request.resource.data.serviceId != '')
+            && (
+              request.resource.data.materialId == ''
+              || request.resource.data.materialId in get(/databases/$(database)/documents/customers/$(currentAccess().data.customerId)).data.allowedMaterialIds
+            )
+            && (
+              request.resource.data.serviceId == ''
+              || request.resource.data.serviceId in get(/databases/$(database)/documents/customers/$(currentAccess().data.customerId)).data.allowedServiceIds
+            )
+          )
+        )
+      );
+      allow update: if isOwner() || (
+        isAdmin()
+        && request.resource.data.managerEmail == userEmail()
+        && assignedCustomerAfter(request.resource.data.customerId)
+        && (resource.data.managerEmail == userEmail() || pendingTransfer(request.resource.data.customerId))
+      );
+      allow delete: if isOwner() || (isAdmin() && resource.data.managerEmail == userEmail());
+    }
+
+    match /materials/{materialId} {
+      allow read, create, update, delete: if isStaff();
+    }
+
+    match /materialGroups/{groupId} {
+      allow read, create, update, delete: if isStaff();
+    }
+
+    match /materialTemplates/{templateId} {
+      allow read, create, update, delete: if isStaff();
+    }
+
+    match /exchangeRates/{rateDate} {
+      allow read, create, update, delete: if isStaff();
+    }
+
+    match /publicTracking/{token} {
+      allow get: if true;
+      allow list: if false;
+      allow create, update, delete: if isStaff();
+
+      match /orders/{orderId} {
+        allow read: if true;
+        allow create, update, delete: if isStaff();
+      }
+    }
+
+    match /settings/{settingId} {
+      allow read: if signedIn();
+      allow create, update: if isStaff();
+      allow delete: if isOwner();
+    }
+
+    match /backupSettings/{email} {
+      allow read, create, update: if isOwner() || (isAdmin() && email == userEmail());
+      allow delete: if isOwner() || (isAdmin() && email == userEmail());
+    }
+
+    match /customerBackups/{backupId} {
+      allow read: if isOwner() || (isAdmin() && resource.data.managerEmail == userEmail());
+      allow create: if isOwner() || (
+        isAdmin()
+        && request.resource.data.managerEmail == userEmail()
+        && assignedCustomer(request.resource.data.customerId)
+      );
+      allow delete: if isOwner() || (isAdmin() && resource.data.managerEmail == userEmail());
+      allow update: if false;
+    }
+
+    match /customerTransfers/{transferId} {
+      allow read: if isOwner() || (isAdmin() && resource.data.toEmail == userEmail());
+      allow create: if isOwner()
+        && request.resource.data.status == 'pending'
+        && request.resource.data.toEmail is string
+        && request.resource.data.customerId is string;
+      allow update: if isOwner() || (
+        isAdmin()
+        && resource.data.toEmail == userEmail()
+        && resource.data.status == 'pending'
+        && request.resource.data.status in ['accepted', 'rejected']
+        && request.resource.data.toEmail == resource.data.toEmail
+        && request.resource.data.customerId == resource.data.customerId
+        && request.resource.data.customerEmail == resource.data.customerEmail
+      );
+      allow delete: if isOwner();
+    }
+
+    match /activities/{activityId} {
+      allow read: if isOwner() || (isAdmin() && resource.data.managerEmail == userEmail());
+      allow create: if isStaff()
+        && request.resource.data.actorEmail == userEmail()
+        && (isOwner() || request.resource.data.managerEmail == userEmail());
+      allow update: if isOwner();
+      allow delete: if false;
+    }
+
+    match /trash/{trashId} {
+      allow read, delete: if isOwner() || (isAdmin() && resource.data.managerEmail == userEmail());
+      allow create: if isOwner() || (isAdmin() && request.resource.data.managerEmail == userEmail());
+      allow update: if isOwner() || (isAdmin() && resource.data.managerEmail == userEmail() && request.resource.data.managerEmail == userEmail());
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

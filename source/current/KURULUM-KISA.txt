@@ -1,0 +1,20 @@
+İZMİRDE REKLAM SİPARİŞ TAKİP — KISA KURULUM
+
+Sürüm: 1.9.18
+
+1) C:\siparis-takip\release\IzmirdeReklam-SiparisTakip-Kurulum.exe dosyasını çalıştırın.
+2) Kurulum masaüstüne ve Başlat menüsüne “İzmirde Reklam Sipariş Takip” kısayolu ekler.
+3) Yönetici Google hesabınızla giriş yapın. Müşteri ve diğer yöneticileri panelden ekleyip “Davet gönder” seçeneğini kullanın.
+4) Ayarlar > WhatsApp bölümünden WhatsApp’ı açın. İlk kullanımda telefonda WhatsApp > Bağlı cihazlar bölümünden QR kodu bir kez okutun.
+5) Mesaja veya eke sağ tıklayarak siparişe alma, projeyi iptal etme ya da görüşmeyi müşteri formuna aktarma işlemini başlatın. Her kayıt önce onaya gelir.
+6) Ayarlar > Para birimi ve kur bölümünden sistem para birimini seçin. Kur varsayılan olarak günlük otomatik alınır; yalnız “Manuel kur kullan” açılırsa elle girilir.
+7) Dövizli malzemenin alış fiyatını ve para birimini bir kez kaydedin. Sipariş tutarı güncel kura göre sistem para biriminde otomatik hesaplanır; TL malzemeler TL olarak kalır.
+8) Müşteri panelindeki “Sipariş ekle” talebi yöneticiye düşer. Yönetici, müşteri ayarından “Müşteri ortalama fiyatları görsün” seçeneğini açıp kapatabilir.
+9) Yönetici, müşteri ayarındaki “Müşteri panelden sipariş ekleyebilsin” iznini açar veya kapatır. Kapalıysa müşteri bu düğmeyi görmez.
+10) Aynı ayardaki “Müşterinin seçebileceği ürünler” bölümünden malzeme ve hizmetleri açıp kapatır. Müşteri yalnız izin verilenleri seçebilir.
+11) Hızlı takip müşterileri e-posta olmadan kişiye özel bağlantıyla yalnız kendi siparişlerini görür.
+
+Program Antigravity, Node.js, Chrome uzantısı veya Java gerektirmez. İnternet bağlantısı yeterlidir.
+
+Canlı adres:
+https://PRIVATE_VALUE_011

@@ -1,0 +1,297 @@
+[
+  {
+    "path": ".gitattributes",
+    "bytes": 47,
+    "sha256": "cf2c08569512eff33d297f411ece9f4f86ac94304359f44eb0799616c8f906b7"
+  },
+  {
+    "path": ".gitignore",
+    "bytes": 126,
+    "sha256": "98d5cf63bc44a8fbb7963e61428b3dd524bade0b8f216d1c5bb8c4f5bea9bf75"
+  },
+  {
+    "path": "CONTRIBUTING.md",
+    "bytes": 452,
+    "sha256": "f740a95adf35bfd69f367495160ee5878d0c9ddaa8aae5eef6ca9b123593396a"
+  },
+  {
+    "path": "EKSIKLER.md",
+    "bytes": 1731,
+    "sha256": "67e0351317690515ce7ec7609788ba1372fb2618d87ab2e46e03ea15312c3e78"
+  },
+  {
+    "path": "GELISTIRMELER.md",
+    "bytes": 654,
+    "sha256": "83c40e0a21e2d1e1f051fb6963dccbab79f958bb9a8217b76977a7f4141ede31"
+  },
+  {
+    "path": "KURULUM.md",
+    "bytes": 2336,
+    "sha256": "70fa36f904a185ab31bf32505aea417dff0a30b64ee79a789a2af529a3188b96"
+  },
+  {
+    "path": "LICENSE",
+    "bytes": 1087,
+    "sha256": "34e81cd463386256f6f6b2e5e743a151c229314b5e1e8874cba6af1d360e3bc8"
+  },
+  {
+    "path": "MIMARI.md",
+    "bytes": 2133,
+    "sha256": "6638946994e83cf434ef5dc03ecd88027f45b2ffff01e8f776ebfe1fcc00cdbd"
+  },
+  {
+    "path": "README.md",
+    "bytes": 1100,
+    "sha256": "c89fd0c64d1b623a89cac272ac7cbb67852f3cc41e63dcaca6685ccf8eb40d91"
+  },
+  {
+    "path": "SECURITY.md",
+    "bytes": 401,
+    "sha256": "b2cfbffdb60eb1d2adb5badf0dd4be925816557299725175dc8573cad0808456"
+  },
+  {
+    "path": "THIRD_PARTY_NOTICES.md",
+    "bytes": 469,
+    "sha256": "69924cba035469094782a0f664182b2a1aab0b3c3dab893d21023625a2f2bf82"
+  },
+  {
+    "path": "reconstruction/BAGIMLILIKLAR.json",
+    "bytes": 408,
+    "sha256": "9fce06eb4874460e28bfe81dc6fb328b0b86c7a91ab174a721dc25d6f9c00102"
+  },
+  {
+    "path": "reconstruction/EXTERNAL_SOURCES.json",
+    "bytes": 1076,
+    "sha256": "d05905824af896572c8b574a136b64ca95a3cebe9ea9f3be2e9210c12d5ed958"
+  },
+  {
+    "path": "reconstruction/MODULES.json",
+    "bytes": 733,
+    "sha256": "0934bd39c2c524a82ca19f3018deaf17359a4e297cfd52ccb6cf2f2637181ecc"
+  },
+  {
+    "path": "reconstruction/PRIVACY.json",
+    "bytes": 251,
+    "sha256": "3ccb9d27b73d97a3828ebda5efbf39636c34e2766660c3a5c80538439bf9646e"
+  },
+  {
+    "path": "source/current/ACCEPTANCE_TESTS.md",
+    "bytes": 2415,
+    "sha256": "9ec7ac155723abb2e65aa31054e85cee9fa3b4a546b7de86357d98b39d8feaef"
+  },
+  {
+    "path": "source/current/AGENTS.md",
+    "bytes": 1565,
+    "sha256": "1a212a4fb5aeafafd4f5fdf7e4a2547dfb514b1a95830013aa84b745e7971cfc"
+  },
+  {
+    "path": "source/current/ANTIGRAVITY_START.txt",
+    "bytes": 1598,
+    "sha256": "1bf20209cc16a25f68f1e4b510839e8ee1135ff26558d1976c52673e520386ff"
+  },
+  {
+    "path": "source/current/KURULUM-KISA.txt",
+    "bytes": 1864,
+    "sha256": "9df773b736bb38445a312c2339ea43381ce31069f95adffe47c72b7b85aab724"
+  },
+  {
+    "path": "source/current/PRODUCT_SPEC.md",
+    "bytes": 3677,
+    "sha256": "fbe629dcd5b403af72f98b11ecc52fb5b84ce61da39a2abb088702904374470b"
+  },
+  {
+    "path": "source/current/SIPARIS_TAKIP_MASTER_CONTEXT.json",
+    "bytes": 58321,
+    "sha256": "b2e34adc0df7ad2784e46041dcf53132458e61863071b8625d7b488d2e58d702"
+  },
+  {
+    "path": "source/current/TEST_REPORT.md",
+    "bytes": 3029,
+    "sha256": "2fa576f128514dc30037d07a0ebee074496bf53e0db7c3d7a659743cb129ce45"
+  },
+  {
+    "path": "source/current/app/.firebaserc",
+    "bytes": 61,
+    "sha256": "01086584f959ca58af81ec5862c553c1ba977230cf9ef056679786cfc15ebe23"
+  },
+  {
+    "path": "source/current/app/.oxlintrc.json",
+    "bytes": 231,
+    "sha256": "1be899e45c49b2a2edc715bc3bfb31d8ed8e866ed7ebab2065ff6e55e88c2396"
+  },
+  {
+    "path": "source/current/app/firebase.json",
+    "bytes": 1044,
+    "sha256": "a7c39354f1e1d0e44628bac8be66db32666e7fc055fffb797d75dd98ac6d7950"
+  },
+  {
+    "path": "source/current/app/firestore.rules",
+    "bytes": 10650,
+    "sha256": "72575209e5d5ffcab29ebf25576c9cc0d3ff161a7c70ffe08271e20e842abf12"
+  },
+  {
+    "path": "source/current/app/index.html",
+    "bytes": 528,
+    "sha256": "c4dcf9a930a15f632251d4cd69239e0f5f9dddf3eff86c91e25153185f1ab31c"
+  },
+  {
+    "path": "source/current/app/main.cjs",
+    "bytes": 423,
+    "sha256": "79aac87ac6c2a969eefc48a1d430a6db5d929ec36773dd74441a4c62f5bc81f8"
+  },
+  {
+    "path": "source/current/app/package-lock.json",
+    "bytes": 482826,
+    "sha256": "ecda1e85bdb95c30d1e8159ae0e29b06bdc81588f6c7c1ad24a7acc688f80bb7"
+  },
+  {
+    "path": "source/current/app/package.json",
+    "bytes": 2305,
+    "sha256": "da823dfb3fc4a41e05062e401526c2cf33208466d742b3bde16acf681d2ae887"
+  },
+  {
+    "path": "source/current/app/README.md",
+    "bytes": 743,
+    "sha256": "abbd578930691304a51fda9fb6aba4268ead4daab8211bf21415d8b9baa10084"
+  },
+  {
+    "path": "source/current/app/TEST_REPORT.md",
+    "bytes": 1551,
+    "sha256": "ff2e8fa75cc3f5cc4b945c52aa20643a6d804ba15d2d68183247f7ea55257429"
+  },
+  {
+    "path": "source/current/app/vite.config.js",
+    "bytes": 174,
+    "sha256": "e16d0c08f8983f727fea8225d2424a18d254660cc73b4f93298e04d6425dde07"
+  },
+  {
+    "path": "source/current/release/builder-debug.yml",
+    "bytes": 7701,
+    "sha256": "0166e9a235b4c6a3edefb2b5e9f789b1a4fe2b4b07fd4ef6999da7fb047e3584"
+  },
+  {
+    "path": "source/current/release/.icon-ico/icon.ico",
+    "bytes": 32265,
+    "sha256": "c971f8d345df3b766a49c8482b4e4c7444a04ea48cb11689ae3a5f3f34f5256d"
+  },
+  {
+    "path": "source/current/app/build/icon.png",
+    "bytes": 14955,
+    "sha256": "e87918ccd552a2fcb9eda2c2ab413f6be57caa04eb36f6e114edc90feb028161"
+  },
+  {
+    "path": "source/current/app/build/icon.svg",
+    "bytes": 810,
+    "sha256": "3c5f1fa6b251c3b57178300891e670f41f45ee375bfca1defab7a55fba9afaca"
+  },
+  {
+    "path": "source/current/app/desktop-package/desktop-oauth.cjs",
+    "bytes": 5655,
+    "sha256": "2dd0316bdd7f5335a3ef27bd5bb06b663b784687dd6cf698ed51dd732a0c5a28"
+  },
+  {
+    "path": "source/current/app/desktop-package/main.cjs",
+    "bytes": 26376,
+    "sha256": "f762c90f177692a8ea63989830dd30810820850e3dde56b55951b0c7abb4603d"
+  },
+  {
+    "path": "source/current/app/desktop-package/package-lock.json",
+    "bytes": 243,
+    "sha256": "522e6021d618b78a02640c7b7808bafdd4e96c7938f28b983b3c54cef435a3c7"
+  },
+  {
+    "path": "source/current/app/desktop-package/package.json",
+    "bytes": 1318,
+    "sha256": "88e46db38ffda803a337e571d8cb8799dc720e7dc9b5522aed502dd9f6050922"
+  },
+  {
+    "path": "source/current/app/desktop-package/preload.cjs",
+    "bytes": 810,
+    "sha256": "1a1f94e13c982afcac5de022a7822447ea1cf1ea39c5f7a9adde8a0f2c1e6b2c"
+  },
+  {
+    "path": "source/current/app/desktop-package/whatsapp-extractor.cjs",
+    "bytes": 2525,
+    "sha256": "2f8b9296d184e2b2f9debbcdda301ad462e24aa43de9dd02b2d986237ee53f40"
+  },
+  {
+    "path": "source/current/app/desktop-package/whatsapp-preload.cjs",
+    "bytes": 18934,
+    "sha256": "454368aa8f6b0ea7265ff9d99b4caf9a5dc28d344a5a04b5681016b7005f62d7"
+  },
+  {
+    "path": "source/current/app/dist/favicon.svg",
+    "bytes": 527,
+    "sha256": "4d7373c94da7a4f59b80b1e451a8bdb24876b786758dc1e94bba8111b6d1e31e"
+  },
+  {
+    "path": "source/current/app/dist/index.html",
+    "bytes": 629,
+    "sha256": "f6e72ed3513126bb3f1ae6a581a91f6ed5b7b1f318c189d674402128e216e789"
+  },
+  {
+    "path": "source/current/app/public/favicon.svg",
+    "bytes": 527,
+    "sha256": "4d7373c94da7a4f59b80b1e451a8bdb24876b786758dc1e94bba8111b6d1e31e"
+  },
+  {
+    "path": "source/current/app/scripts/guard-production-deploy.mjs",
+    "bytes": 2116,
+    "sha256": "8a46feea126b806ff9092fcdc32493c112b0e6a3507e2db8ef495e7fd977afe1"
+  },
+  {
+    "path": "source/current/app/src/App.css",
+    "bytes": 77721,
+    "sha256": "49db4c03dfa64909115a0c0b3319abeb4c05dc3b6b5d8c190f37c71b8274a1b4"
+  },
+  {
+    "path": "source/current/app/src/App.jsx",
+    "bytes": 241766,
+    "sha256": "931e8fd934d9d23ef4f5df4deeda59ba06d408dd7355cdbfe7641b20a23db106"
+  },
+  {
+    "path": "source/current/app/src/firebase.js",
+    "bytes": 1468,
+    "sha256": "0c853a02e38d6a66f49d3684df33d0384d9411ddae67132a951a133154c64f00"
+  },
+  {
+    "path": "source/current/app/src/index.css",
+    "bytes": 547,
+    "sha256": "b253c1b83bab5b7dc9d679c0dffed845d34b846f4393abd7f0adf1365d66fc92"
+  },
+  {
+    "path": "source/current/app/src/main.jsx",
+    "bytes": 229,
+    "sha256": "4b4b864dbe45253425d0c925337180ec07e204295179f80f59551216f466f618"
+  },
+  {
+    "path": "source/current/app/src/utils.js",
+    "bytes": 37129,
+    "sha256": "5f419595ab6ff42aef43805d5f24c989397ed2c53d5efd8cc5c7290ab5fbb04a"
+  },
+  {
+    "path": "source/current/app/src/utils.test.js",
+    "bytes": 24851,
+    "sha256": "5abe4acf7d94349f5d5dbe5565c5a4267d9a95cbc8e4653a5bad3ebc8004d133"
+  },
+  {
+    "path": "source/current/app/tests/firestore.rules.test.js",
+    "bytes": 12670,
+    "sha256": "f7d4b210af90bfb61658a73e4804b23c239a3a1584555808a04e5d059128050b"
+  },
+  {
+    "path": "source/current/app/dist/assets/index-B-3K4pjC.js",
+    "bytes": 1007970,
+    "sha256": "b4435cbd34c055d66e4610984aef694a18034d39b2598522a34373fc3e5d816c"
+  },
+  {
+    "path": "source/current/app/dist/assets/index-C6oR6LLJ.css",
+    "bytes": 68807,
+    "sha256": "ded3a034daa84c03034864a233a68d8f07e2a063cdf19b96e978b8db08b02d76"
+  },
+  {
+    "path": "source/current/app/desktop-package/build/installer.nsh",
+    "bytes": 1328,
+    "sha256": "9fbc87e2ac2e6fc0e9878f85009f6fd6c727e124e478e4960dd13ee6eba055ef"
+  }
+]

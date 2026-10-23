@@ -1,0 +1,14 @@
+
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.private/
+private/
+node_modules/
+.venv/
+__pycache__/
+*.sqlite
+*.db
+*.log

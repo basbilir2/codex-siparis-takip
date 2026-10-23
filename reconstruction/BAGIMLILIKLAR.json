@@ -1,0 +1,11 @@
+{
+  "manifests": [
+    "source/current/app/desktop-package/package-lock.json",
+    "source/current/app/desktop-package/package.json",
+    "source/current/app/firebase.json",
+    "source/current/app/firestore.rules",
+    "source/current/app/package-lock.json",
+    "source/current/app/package.json"
+  ],
+  "policy": "Use preserved manifest and lock files; no personal account values are included."
+}

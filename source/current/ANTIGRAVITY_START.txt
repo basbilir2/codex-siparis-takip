@@ -1,0 +1,45 @@
+ANTIGRAVITY — BU TALİMATI EKSİKSİZ UYGULA
+
+PROJE KLASÖRÜ:
+C:\siparis-takip
+
+OKUMA SIRASI:
+1. C:\siparis-takip\SIPARIS_TAKIP_MASTER_CONTEXT.json
+2. C:\siparis-takip\PRODUCT_SPEC.md
+3. C:\siparis-takip\ACCEPTANCE_TESTS.md
+
+ÖNEMLİ:
+Ekranda şu anda görünen "Test Kullanıcısı / Müşteri (Mock Test)" uygulaması bir prototiptir ve FINAL DEĞİLDİR.
+Bunu geliştirip gerçek sisteme dönüştür. Mock kullanıcıyla devam etme.
+
+YASAK:
+- Mock login'i final özellik gibi bırakmak
+- Hardcoded kullanıcı/rol
+- Gerçek Firebase bağlantısı olmadan tamamlandı demek
+- Cloudflare / Apps Script / Sheets backend eklemek
+- Yeni servis/üyelik eklemek
+- V1'e WhatsApp otomasyonu eklemek
+- Canlı test edilmemiş şeye PASS yazmak
+
+İLK İŞ:
+A) Mevcut kodu tara ve mock login/role/data nerede kullanılıyor listele.
+B) Production'da mock'u tamamen devre dışı bırak.
+C) Firebase config eksikse kullanıcıdan gerekli config değerlerini iste; değer uydurma.
+D) Phase 1'de gerçek Google Auth + access rol okumasını çalıştır.
+E) İki gerçek hesapla rol testi geçmeden tam dashboard geliştirmesine devam etme.
+
+ÇALIŞMA KURALI:
+Her faz sonunda TEST_REPORT.md güncelle.
+PASS kanıtı olmayan maddeyi PASS yazma.
+Başarısız test varsa önce düzelt, sonraki faza geçme.
+
+FINAL HEDEF:
+C:\siparis-takip\release\IzmirdeReklam-SiparisTakip-Kurulum.exe
+
+Final EXE:
+- Antigravity olmadan çalışacak
+- Node.js kurulumu istemeyecek
+- gerçek Firebase'e bağlanacak
+- gerçek Google login kullanacak
+- Program Ekle/Kaldır'dan kaldırılacak
+- Türkçe karakter/DPI doğru olacak

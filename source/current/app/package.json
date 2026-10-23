@@ -1,0 +1,74 @@
+{
+  "name": "siparis-takip",
+  "private": true,
+  "version": "1.9.44",
+  "description": "İzmirde Reklam için güvenli sipariş takip uygulaması",
+  "author": "İzmirde Reklam",
+  "type": "module",
+  "main": "main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "test": "npm run test:unit",
+    "test:unit": "vitest run src/utils.test.js",
+    "test:rules": "vitest run tests/firestore.rules.test.js",
+    "test:rules:emulator": "firebase emulators:exec --project demo-siparis-takip --only firestore \"npm run test:rules\"",
+    "preview": "vite preview",
+    "electron:dev": "electron .",
+    "electron:build": "npm run build && electron-builder --projectDir desktop-package --win nsis",
+    "deploy:production": "npm run build && firebase deploy --only hosting --project siparis-takip-70e85"
+  },
+  "build": {
+    "appId": "com.izmirde.reklam.siparistakip.production",
+    "productName": "İzmirde Reklam Sipariş Takip",
+    "asar": true,
+    "files": [
+      "dist/**/*",
+      "build/icon.png",
+      "main.cjs",
+      "preload.cjs",
+      "package.json"
+    ],
+    "directories": {
+      "output": "../release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "guid": "57d6bca7-37f9-4ae4-9ce8-0efc0b690a43",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "shortcutName": "İzmirde Reklam Sipariş Takip",
+      "uninstallDisplayName": "İzmirde Reklam Sipariş Takip",
+      "artifactName": "IzmirdeReklam-SiparisTakip-Kurulum.exe"
+    }
+  },
+  "dependencies": {
+    "firebase": "^12.17.1",
+    "papaparse": "^5.6.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.2",
+    "read-excel-file": "^9.3.10"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "electron": "^43.3.0",
+    "electron-builder": "^26.15.3",
+    "firebase-tools": "^15.26.0",
+    "oxlint": "^1.75.0",
+    "vite": "^8.2.0",
+    "vitest": "^4.0.18"
+  }
+}

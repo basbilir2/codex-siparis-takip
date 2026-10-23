@@ -1,0 +1,6 @@
+{
+  "policy": "Software sources only; no live personal/contact/customer/debt records.",
+  "removed_artifact_count": 11,
+  "sanitized_file_count": 6,
+  "private_values": "Placeholders must be configured locally; never commit live customer data."
+}

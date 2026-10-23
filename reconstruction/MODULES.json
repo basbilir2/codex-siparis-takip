@@ -1,0 +1,17 @@
+[
+  "source/current/app/desktop-package/desktop-oauth.cjs",
+  "source/current/app/desktop-package/main.cjs",
+  "source/current/app/desktop-package/preload.cjs",
+  "source/current/app/desktop-package/whatsapp-extractor.cjs",
+  "source/current/app/desktop-package/whatsapp-preload.cjs",
+  "source/current/app/dist/assets/index-B-3K4pjC.js",
+  "source/current/app/main.cjs",
+  "source/current/app/scripts/guard-production-deploy.mjs",
+  "source/current/app/src/App.jsx",
+  "source/current/app/src/firebase.js",
+  "source/current/app/src/main.jsx",
+  "source/current/app/src/utils.js",
+  "source/current/app/src/utils.test.js",
+  "source/current/app/tests/firestore.rules.test.js",
+  "source/current/app/vite.config.js"
+]
